@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { View, Text, StyleSheet, Button, TextInput } from "react-native";
 import { NotepadContext } from "../store/contextapi/NotepadContext";
-
 import Geolocation from "react-native-geolocation-service";
 import { TouchableOpacity } from "react-native";
 

@@ -2,8 +2,7 @@ export const initalState = [
   {
     id: 1,
     title: "Hello World",
-    content:
-      "Olá, eu sou uma anotação criada para testes. Neste aplicativo, você pode adicionar, visualizar, deletar e editar as anotações!",
+    content: "Olá, eu sou uma anotação criada para testes. Neste aplicativo, você pode adicionar, visualizar, deletar e editar as anotações!",
   },
 ];
 

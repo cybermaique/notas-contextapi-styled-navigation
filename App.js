@@ -1,7 +1,6 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
 import IndexScreen from "./src/screens/Index";
 import { NotepadProvider } from "./src/store/contextapi/NotepadContext";
 import Details from "./src/screens/Details";
@@ -20,11 +19,6 @@ function App() {
           options={{
             title: "Seu Caderninho",
             headerTitleAlign: "center",
-            headerRight: () => {
-              return (
-                <Feather onP name="plus" size={30} style={{ marginRight: 5 }} />
-              );
-            },
           }}
         />
         <Stack.Screen
