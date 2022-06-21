@@ -1,16 +1,13 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
-// import {createStackNavigator} from '@react-navigation/native-stack'
+import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import IndexScreen from "./src/screens/indexScreen";
-import { BlogProvider } from "./src/context/BlogContext";
-import ShowScreen from "./src/screens/Showscreen";
-import CreateScreen from "./src/screens/CreateScreen";
+import IndexScreen from "./src/screens/Index";
+import { NotepadProvider } from "./src/store/contextapi/NotepadContext";
+import Details from "./src/screens/Details";
+import Create from "./src/screens/Create";
 import { Feather } from "@expo/vector-icons";
-import EditScreen from './src/screens/EditScreen'
-
+import Edit from "./src/screens/Edit";
 
 const Stack = createNativeStackNavigator();
 function App() {
@@ -32,21 +29,19 @@ function App() {
         />
         <Stack.Screen
           name="show"
-          component={ShowScreen}
+          component={Details}
           options={{ title: "view", headerTitleAlign: "center" }}
         />
 
-
         <Stack.Screen
           name="edit"
-          component={EditScreen}
+          component={Edit}
           options={{ title: "update note", headerTitleAlign: "center" }}
         />
 
-
         <Stack.Screen
           name="create"
-          component={CreateScreen}
+          component={Create}
           options={{ title: "create", headerTitleAlign: "center" }}
         />
       </Stack.Navigator>
@@ -56,8 +51,8 @@ function App() {
 
 export default () => {
   return (
-    <BlogProvider>
+    <NotepadProvider>
       <App />
-    </BlogProvider>
+    </NotepadProvider>
   );
 };

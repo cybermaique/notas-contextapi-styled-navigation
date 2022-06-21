@@ -1,17 +1,9 @@
 import React, { useContext, useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  Button,
-  TextInput,
-} from "react-native";
-import { BlogContext } from "../context/BlogContext";
+import { View, Text, StyleSheet, Button, TextInput } from "react-native";
+import { NotepadContext } from "../store/contextapi/NotepadContext";
 
-import Geolocation from 'react-native-geolocation-service';
-import RNFusedLocationPackage from 'react-native-geolocation-service';
-import { TouchableOpacity } from "react-native-gesture-handler";
+import Geolocation from "react-native-geolocation-service";
+import { TouchableOpacity } from "react-native";
 
 function getLocation() {
   Geolocation.getCurrentPosition(
@@ -28,41 +20,35 @@ function getLocation() {
   );
 }
 
-
-const CreateScreen = ({ route, navigation }) => {
+const Create = ({ route, navigation }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const { state, dispatch } = useContext(BlogContext);
+  const { state, dispatch } = useContext(NotepadContext);
   return (
     <View style={{ margin: 3 }}>
-      <Text style={{ fontSize: 22 }}>Enter Title</Text>
+      <Text style={{ fontSize: 22 }}>Título</Text>
       <TextInput
         style={styles.input}
         value={title}
         onChangeText={(text) => setTitle(text)}
       />
-      <Text style={{ fontSize: 22 }}>Enter Context</Text>
+      <Text style={{ fontSize: 22 }}>Texto</Text>
       <TextInput
         style={styles.input}
         value={content}
         onChangeText={(text) => setContent(text)}
       />
       <Button
-        title="Add blog post"
+        title="Adicionar uma nota"
         onPress={() => {
           dispatch({ type: "ADD_POST", payload: { title, content } });
           navigation.goBack();
         }}
       />
 
-
-<Button
-title="teste"
-  onPress={getLocation}>
-    <Text>Obter minha localização</Text>
-  </Button>
-
-
+      <TouchableOpacity title="teste" onPress={getLocation}>
+        <Text>Obter minha localização</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -76,4 +62,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreateScreen;
+export default Create;
